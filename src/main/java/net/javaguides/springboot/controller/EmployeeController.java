@@ -23,7 +23,7 @@ public class EmployeeController {
     //get employees : get all employees records saved in the database
     @GetMapping("/employees")
     public List<Employee> getAllEmployee(){
-        return this.employeeRespository.findAll();
+            return this.employeeRespository.findAll();
     }
 
     //get employee by id : get a particular employee details by the specified id
