@@ -4,6 +4,7 @@ import net.javaguides.springboot.exception.ResourceNotFoundException;
 import net.javaguides.springboot.model.Employee;
 import net.javaguides.springboot.repository.EmployeeRespository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 //import org.springframework.validation.annotation.Validated;
 import org.springframework.validation.annotation.Validated;
@@ -61,5 +62,17 @@ public class EmployeeController {
         return response;
     }
 
+    //get employee details by first name;
+    @GetMapping("/employees/firstname")
+    public ResponseEntity<List<Employee>> getEmployeeByFirstName(@RequestParam String firstName) {
+        return new ResponseEntity<List<Employee>>(employeeRespository.findByFirstName(firstName), HttpStatus.OK);
+    }
+
+    //get employee details by last name;
+
+    @GetMapping("/employees/lastname")
+    public ResponseEntity<List<Employee>> getEmployeeByLastName(@RequestParam String lastName) {
+        return new ResponseEntity<List<Employee>>(employeeRespository.findByLastName(lastName), HttpStatus.OK);
+    }
 
 }
